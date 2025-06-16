@@ -11,7 +11,13 @@ app.use(express.json());
 app.use(cors())
 app.disable('etag');
 
+app.get('/', (req, res) => {
+  res.set('Cache-Control', 'no-store, no-cache, must-revalidate, private');
+  res.send({ msg: 'Hello World' })
+})
+
 app.get('/health', (req, res) => {
+  res.set('Cache-Control', 'no-store, no-cache, must-revalidate, private');
   res.status(200).send({ status: 'OK' })
 })
 

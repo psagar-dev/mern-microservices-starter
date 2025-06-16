@@ -24,4 +24,11 @@ npm install
 npm start
 ```
 
-Note: This will run the frontend in the development server. To run in production, build the application by running the command `npm run build`
+Note: This will run the frontend in the development server. To run in production, build the application by running the command `npm run build`.
+
+## Common warnings
+
+During `npm install` in `frontend/` you may see deprecation warnings for several
+Babel packages such as `@babel/plugin-proposal-class-properties`. These warnings
+come from dependencies of `react-scripts` and do not affect the functionality of
+the application.
