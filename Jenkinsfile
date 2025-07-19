@@ -1,7 +1,7 @@
 @Library('Shared') _
 def mernMicroservicesHello = securityConfig("securelooper/mern-microservices-hello:${BUILD_NUMBER}",'')
 def mernMicroservicesProfile = securityConfig("securelooper/mern-microservices-profile:${BUILD_NUMBER}",'')
-
+def mernMicroservicesfrontend = securityConfig("securelooper/mern-microservices-frontend:${BUILD_NUMBER}",'')
 pipeline {
     agent any
 
@@ -35,8 +35,10 @@ pipeline {
                         dir('frontend') {
                             script {
                                 echo "Building Docker image for frontend"
-                                // def imageName = "securelooper/frontend:${BUILD_NUMBER}"
-                                // docker.build(imageName, '.')
+                                docker.build(
+                                    "${mernMicroservicesfrontend.DOCKER_IMAGE}",
+                                    "--build-arg REACT_APP_API_BASE_URL_HELLO=${env.REACT_APP_API_BASE_URL_HELLO} --build-arg REACT_APP_API_BASE_URL_PROFILE=${env.REACT_APP_API_BASE_URL_PROFILE} ."
+                                )
                             }
                         }
                     }
