@@ -91,7 +91,9 @@ pipeline {
                 }
                 """
                 echo "Sending SUCCESS notification..."
-                sh "aws sns publish --topic-arn '${env.SNS_TOPIC_ARN}' --message '${message}' --region '${env.AWS_REGION}'"
+                withCredentials([aws(credentialsId: 'aws-credentials')]) {
+                    sh "aws sns publish --topic-arn '${env.SNS_TOPIC_ARN}' --message '${message}' --region '${env.AWS_REGION}'"
+                }
             }
         }
 
@@ -108,7 +110,9 @@ pipeline {
                 }
                 """
                 echo "Sending FAILURE notification..."
-                sh "aws sns publish --topic-arn '${env.SNS_TOPIC_ARN}' --message '${message}' --region '${env.AWS_REGION}'"
+                withCredentials([aws(credentialsId: 'aws-credentials')]) {
+                    sh "aws sns publish --topic-arn '${env.SNS_TOPIC_ARN}' --message '${message}' --region '${env.AWS_REGION}'"
+                }
             }
         }
     }
