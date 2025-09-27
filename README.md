@@ -1,6 +1,6 @@
 # 🚀 MERN Microservices Deployment on Azure Kubernetes Service (AKS)
 
-This project demonstrates deploying a **MERN application** (React frontend + Node.js microservices + MongoDB Atlas) on **Azure Kubernetes Service (AKS)** with CI/CD using **Azure Pipelines**.
+This project demonstrates deploying a **MERN application** (React frontend + Node.js microservices + MongoDB Atlas) on **Azure Kubernetes Service (AKS)**.
 
 ---
 
